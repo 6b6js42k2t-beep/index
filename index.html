@@ -9,9 +9,9 @@
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f0f4f8; color: #1c2d37; padding-bottom: 30px; }
 header { background: #0b3d5c; color: #fff; padding: 18px 15px; text-align: center; font-size: 20px; font-weight: bold; letter-spacing: 0.5px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); position: sticky; top: 0; z-index: 100; }
-.date-selector-zone { background: #fff; padding: 15px; text-align: center; border-bottom: 1px solid #d0dbe3; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.date-selector-zone { background: #fff; padding: 15px; text-align: center; border-bottom: 1px solid #d0dbe3; }
 .date-selector-zone label { font-size: 14px; font-weight: bold; color: #0b3d5c; display: block; margin-bottom: 6px; }
-.main-date-input { width: 100%; max-width: 280px; padding: 12px; font-size: 16px; font-weight: bold; color: #0b3d5c; border: 2px solid #0b3d5c; border-radius: 8px; background: #f9fbfd; text-align: center; -webkit-appearance: none; }
+.main-date-input { width: 100%; max-width: 280px; padding: 12px; font-size: 16px; font-weight: bold; color: #0b3d5c; border: 2px solid #0b3d5c; border-radius: 8px; background: #f9fbfd; text-align: center; }
 .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 15px; }
 .card { background: #fff; padding: 12px; border-radius: 12px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.04); border-left: 4px solid #0b3d5c; font-size: 14px; color: #666; }
 .card b { display: block; font-size: 20px; margin-top: 4px; color: #0b3d5c; }
@@ -20,8 +20,8 @@ header { background: #0b3d5c; color: #fff; padding: 18px 15px; text-align: cente
 .card.busy-card { border-left-color: #c62828; }
 .card.busy-card b { color: #c62828; }
 .map-container { width: 100%; overflow-x: auto; padding: 10px 0; background: #e2eaf0; border-top: 1px solid #d0dbe3; border-bottom: 1px solid #d0dbe3; -webkit-overflow-scrolling: touch; }
-.map { position: relative; width: 620px; height: 780px; margin: 0 auto; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); overflow: hidden; }
-.pool { position: absolute; left: 38%; top: 62%; width: 54%; height: 33%; background: #a2e3fa; border: 3px solid #5bc0eb; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #0b3d5c; font-weight: bold; font-size: 16px; letter-spacing: 2px; }
+.map { position: relative; width: 620px; height: 840px; margin: 0 auto; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.06); overflow: hidden; }
+.pool { position: absolute; left: 38%; top: 62%; width: 54%; height: 30%; background: #a2e3fa; border: 3px solid #5bc0eb; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #0b3d5c; font-weight: bold; font-size: 16px; letter-spacing: 2px; }
 .place { position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; font-weight: bold; font-size: 13px; cursor: pointer; box-shadow: 0 3px 6px rgba(0,0,0,0.16); transition: transform 0.1s ease; transform: translate(-50%, -50%); text-align: center; line-height: 1.1; }
 .place:active { transform: translate(-50%, -50%) scale(0.9); }
 .place span.client-name { display: block; font-size: 9px; font-weight: normal; max-width: 38px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 1px; color: #fff; background: rgba(0,0,0,0.2); padding: 1px 2px; border-radius: 3px; }
@@ -30,74 +30,111 @@ header { background: #0b3d5c; color: #fff; padding: 18px 15px; text-align: cente
 .gazebo span.client-name { max-width: 65px; font-size: 10px; }
 .free { background: #2e7d32; }
 .busy { background: #d32f2f; }
-.busy-mattina { background: #f39c12; }
-.busy-pomeriggio { background: #e67e22; }
 .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; backdrop-filter: blur(2px); }
 .box { background: #fff; width: 92%; max-width: 420px; margin: 5vh auto; padding: 20px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); max-height: 90vh; overflow-y: auto; }
 .box h3 { margin-top: 0; margin-bottom: 15px; color: #0b3d5c; border-bottom: 2px solid #f0f4f8; padding-bottom: 8px; font-size: 18px; }
 label { font-size: 12px; font-weight: bold; color: #555; display: block; margin-top: 8px; }
-input, textarea, select { width: 100%; padding: 12px; margin: 4px 0 10px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 15px; background: #f9fbfd; }
+input, textarea, select { width: 100%; padding: 12px; margin: 4px 0 10px 0; box-sizing: border-box; border: 1px solid #ccc; border-radius: 8px; font-size: 15px; background: #f9fbfd; }
 .btn-group { display: flex; gap: 10px; margin-top: 15px; }
 button { padding: 14px; border: none; border-radius: 8px; cursor: pointer; font-size: 15px; font-weight: bold; flex: 1; }
 .save { background: #2e7d32; color: #fff; }
 .freebtn { background: #d32f2f; color: #fff; }
 .closebtn { background: #78909c; color: #fff; }
 #history { padding: 15px; }
-.row { background: #fff; padding: 12px; border-radius: 10px; margin: 8px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.02); border-left: 3px solid #0b3d5c; font-size: 14px; }
+.row { background: #fff; padding: 12px; border-radius: 10px; margin: 8px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.02); border-left: 3px solid #0b3d5c; font-size: 14px; display: flex; justify-content: space-between; align-items: center; }
 </style>
 </head>
+
 <body>
 <header>La Bontà Manager Pro</header>
+
 <div class="date-selector-zone">
   <label for="globalDate">Stai guardando il giorno:</label>
   <input id="globalDate" type="date" class="main-date-input" onchange="refresh()">
 </div>
+
 <div class="stats">
-<div class="card free-card">Liberi<br><b id="freeCount">0</b></div>
-<div class="card busy-card">Occupati<br><b id="busyCount">0</b></div>
-<div class="card">Incassato<br><b id="cash">0 €</b></div>
-<div class="card">Da Incassare<br><b id="pending">0 €</b></div>
+  <div class="card free-card">Liberi<br><b id="freeCount">0</b></div>
+  <div class="card busy-card">Occupati<br><b id="busyCount">0</b></div>
+  <div class="card">Incassato<br><b id="cash">0 €</b></div>
+  <div class="card">Da Incassare<br><b id="pending">0 €</b></div>
 </div>
+
 <div class="map-container">
-  <div class="map" id="map"><div class="pool">PISCINA</div></div>
+  <div class="map" id="map">
+    <div class="pool">PISCINA</div>
+  </div>
 </div>
+
 <div id="history"></div>
+
 <div class="modal" id="modal">
-<div class="box">
-<h3 id="title">Posto</h3>
-<label>Nome Cliente</label><input id="nome">
-<label>Persone</label><input id="persone" type="number">
-<label>Telefono</label><input id="telefono">
-<label>Importo (€)</label><input id="importo" type="number">
-<label>Stato Pagamento</label><select id="pagato"><option value="si">Pagato</option><option value="no">Non pagato</option></select>
-<label>Orario</label>
-<select id="orario">
-  <option value="intera">Intera Giornata</option>
-  <option value="mattina">Solo Mattina</option>
-  <option value="pomeriggio">Solo Pomeriggio</option>
-</select>
-<label>Note</label><textarea id="note"></textarea>
-<div class="btn-group">
-  <button class="freebtn" onclick="freePlace()">Libera</button>
-  <button class="save" onclick="saveBooking()">Salva</button>
-</div>
-<button class="closebtn" style="width:100%; margin-top:10px;" onclick="closeModal()">Chiudi</button>
-</div>
+  <div class="box">
+    <h3 id="title">Posto</h3>
+    <label>Nome Cliente</label><input id="nome">
+    <label>Persone</label><input id="persone" type="number">
+    <label>Telefono</label><input id="telefono">
+    <label>Importo (€)</label><input id="importo" type="number">
+    <label>Stato Pagamento</label>
+    <select id="pagato">
+      <option value="si">Pagato</option>
+      <option value="no">Non pagato</option>
+    </select>
+    <label>Note</label><textarea id="note"></textarea>
+    <div class="btn-group">
+      <button class="freebtn" onclick="freePlace()">Libera</button>
+      <button class="save" onclick="saveBooking()">Salva</button>
+    </div>
+    <button class="closebtn" style="width:100%; margin-top:10px;" onclick="closeModal()">Chiudi</button>
+  </div>
 </div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
 import { getDatabase, ref, set, remove, onValue } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
 
-const app = initializeApp({ databaseURL: "https://bonts-b06e8-default-rtdb.firebaseio.com" });
+const app = initializeApp({
+  databaseURL: "https://bonts-b06e8-default-rtdb.firebaseio.com"
+});
+
 const db = getDatabase(app);
 
 const positions = [
-  {id: 1, x: 16, y: 92, t: 'umbrella'}, {id: 2, x: 16, y: 84, t: 'umbrella'}, {id: 3, x: 16, y: 76, t: 'umbrella'}, {id: 4, x: 16, y: 68, t: 'umbrella'}, {id: 5, x: 16, y: 60, t: 'umbrella'}, {id: 6, x: 16, y: 51, t: 'umbrella'}, {id: 7, x: 50, y: 51, t: 'umbrella'}, {id: 8, x: 84, y: 51, t: 'umbrella'}, {id: 9, x: 16, y: 42, t: 'umbrella'}, {id: 10, x: 50, y: 42, t: 'umbrella'}, {id: 11, x: 84, y: 42, t: 'umbrella'}, {id: 12, x: 16, y: 33, t: 'umbrella'}, {id: 13, x: 50, y: 33, t: 'umbrella'}, {id: 14, x: 84, y: 33, t: 'umbrella'}, {id: 15, x: 16, y: 24, t: 'umbrella'}, {id: 16, x: 50, y: 24, t: 'umbrella'}, {id: 17, x: 84, y: 24, t: 'umbrella'}, {id: 18, x: 16, y: 15, t: 'umbrella'}, {id: 19, x: 50, y: 15, t: 'umbrella'}, {id: 20, x: 84, y: 15, t: 'umbrella'}, {id: 'G1', x: 28, y: 5, t: 'gazebo'}, {id: 'G2', x: 72, y: 5, t: 'gazebo'}
+  {id: 'G1', x: 28, y: 5, t: 'gazebo'},
+  {id: 'G2', x: 72, y: 5, t: 'gazebo'},
+
+  {id: 18, x: 16, y: 15, t: 'umbrella'},
+  {id: 19, x: 50, y: 15, t: 'umbrella'},
+  {id: 20, x: 84, y: 15, t: 'umbrella'},
+
+  {id: 15, x: 16, y: 24, t: 'umbrella'},
+  {id: 16, x: 50, y: 24, t: 'umbrella'},
+  {id: 17, x: 84, y: 24, t: 'umbrella'},
+
+  {id: 12, x: 16, y: 33, t: 'umbrella'},
+  {id: 13, x: 50, y: 33, t: 'umbrella'},
+  {id: 14, x: 84, y: 33, t: 'umbrella'},
+
+  {id: 9, x: 16, y: 42, t: 'umbrella'},
+  {id: 10, x: 50, y: 42, t: 'umbrella'},
+  {id: 11, x: 84, y: 42, t: 'umbrella'},
+
+  {id: 6, x: 16, y: 51, t: 'umbrella'},
+  {id: 7, x: 50, y: 51, t: 'umbrella'},
+  {id: 8, x: 84, y: 51, t: 'umbrella'},
+
+  {id: 5, x: 16, y: 60, t: 'umbrella'},
+  {id: 4, x: 16, y: 68, t: 'umbrella'},
+  {id: 3, x: 16, y: 76, t: 'umbrella'},
+  {id: 2, x: 16, y: 84, t: 'umbrella'},
+  {id: 1, x: 16, y: 91, t: 'umbrella'},
+
+  {id: 'G3', x: 16, y: 97, t: 'gazebo'}
 ];
 
 let allData = {};
 let currentId = null;
+
 document.getElementById('globalDate').value = new Date().toISOString().split('T')[0];
 
 onValue(ref(db, 'prenotazioni/'), (snapshot) => {
@@ -106,39 +143,44 @@ onValue(ref(db, 'prenotazioni/'), (snapshot) => {
 });
 
 const map = document.getElementById('map');
+
 positions.forEach(p => {
   let d = document.createElement('div');
   d.className = 'place ' + p.t;
-  d.style.left = p.x + '%'; d.style.top = p.y + '%';
+  d.style.left = p.x + '%';
+  d.style.top = p.y + '%';
   d.setAttribute('data-id', p.id);
+
   d.onclick = () => {
     currentId = p.id;
     const date = document.getElementById('globalDate').value;
     const b = allData[p.id + '_' + date] || {};
+
     document.getElementById('title').innerText = "Posto " + p.id;
     document.getElementById('nome').value = b.nome || '';
     document.getElementById('persone').value = b.persone || '';
     document.getElementById('telefono').value = b.telefono || '';
     document.getElementById('importo').value = b.importo || '';
     document.getElementById('pagato').value = b.pagato || 'si';
-    document.getElementById('orario').value = b.orario || 'intera';
     document.getElementById('note').value = b.note || '';
     document.getElementById('modal').style.display = 'block';
   };
+
   map.appendChild(d);
 });
 
 window.saveBooking = () => {
   const date = document.getElementById('globalDate').value;
+
   set(ref(db, 'prenotazioni/' + currentId + '_' + date), {
     nome: document.getElementById('nome').value,
     persone: document.getElementById('persone').value,
     telefono: document.getElementById('telefono').value,
     importo: document.getElementById('importo').value,
     pagato: document.getElementById('pagato').value,
-    orario: document.getElementById('orario').value,
     note: document.getElementById('note').value
   });
+
   document.getElementById('modal').style.display = 'none';
 };
 
@@ -148,33 +190,39 @@ window.freePlace = () => {
   document.getElementById('modal').style.display = 'none';
 };
 
-window.closeModal = () => document.getElementById('modal').style.display = 'none';
+window.closeModal = () => {
+  document.getElementById('modal').style.display = 'none';
+};
 
 window.refresh = () => {
   const date = document.getElementById('globalDate').value;
-  let free = 0, busy = 0, cash = 0, pending = 0;
+  let free = 0;
+  let busy = 0;
+  let cash = 0;
+  let pending = 0;
   let historyHTML = '<h3>Prenotazioni del giorno</h3>';
-  
+
   positions.forEach(p => {
     const d = allData[p.id + '_' + date];
     const el = document.querySelector(`[data-id="${p.id}"]`);
-    if(d) {
+
+    if (d) {
       busy++;
-      let statusClass = 'busy';
-      if (d.orario === 'mattina') statusClass = 'busy-mattina';
-      else if (d.orario === 'pomeriggio') statusClass = 'busy-pomeriggio';
-      
-      el.className = `place ${p.t} ${statusClass}`;
-      el.innerHTML = `<b>${p.id}</b><span class="client-name">${d.nome.split(' ')[0]}</span>`;
+      el.className = 'place ' + p.t + ' busy';
+      el.innerHTML = `<b>${p.id}</b><span class="client-name">${(d.nome || '').split(' ')[0]}</span>`;
+
       let imp = Number(d.importo || 0);
-      if(d.pagato === 'si') cash += imp; else pending += imp;
-      historyHTML += `<div class="row"><b>${p.id}</b> - ${d.nome} (${imp}€)</div>`;
+      if (d.pagato === 'si') cash += imp;
+      else pending += imp;
+
+      historyHTML += `<div class="row"><b>${p.id}</b> - ${d.nome || ''} (${imp}€)</div>`;
     } else {
       free++;
       el.className = 'place ' + p.t + ' free';
       el.innerHTML = `<b>${p.id}</b>`;
     }
   });
+
   document.getElementById('freeCount').innerText = free;
   document.getElementById('busyCount').innerText = busy;
   document.getElementById('cash').innerText = cash + " €";
